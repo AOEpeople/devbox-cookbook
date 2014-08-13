@@ -10,7 +10,7 @@ depends 'apache2'
 depends 'mysql'
 depends 'database'
 depends 'php'
-depends 'cron'
 depends 'ssh_known_hosts'
+# depends 'cron'
 
 supports 'ubuntu'
