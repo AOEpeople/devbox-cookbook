@@ -17,3 +17,6 @@ include_attribute 'mysql'
 default['mysql']['server_debian_password'] = 'root'
 default['mysql']['server_root_password'] = 'root'
 default['mysql']['server_repl_password'] = 'root'
+
+include_attribute 'samba'
+default['samba']['passdb_backend'] = 'ldapsam'
