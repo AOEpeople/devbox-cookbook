@@ -18,6 +18,14 @@ action :create do
     end
   end
 
+  directory "/home/systemstorage/systemstorage/#{new_resource.project}/bin" do
+    owner 'systemstorage'
+    group 'systemstorage'
+    mode 00775
+    recursive true
+    action :create
+  end
+
   execute 'fix systemstorage permissions' do
     command 'chown -R systemstorage:systemstorage /home/systemstorage/systemstorage; chmod -R ug+rw /home/systemstorage/systemstorage'
     user 'root'
