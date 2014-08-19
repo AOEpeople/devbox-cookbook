@@ -1,0 +1,20 @@
+{
+	"id": "shares",
+	"shares": {
+		"www": {
+			"path": "/var/www"
+			"available": "yes"
+			"valid users": "vagrant"
+			"follow symlinks": "no"
+			"read only": "no"
+			"browseable": "yes"
+			"public": "yes"
+			"writable": "yes"
+			"hide dot files": "no"
+			"veto files": "/.git/"
+			"map archive": "yes"
+			"map system": "yes"
+			"map hidden": "yes"
+		}
+	}
+}
