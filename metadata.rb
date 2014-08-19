@@ -11,6 +11,7 @@ depends 'mysql'
 depends 'database'
 depends 'php'
 depends 'ssh_known_hosts'
+depends 'samba'
 # depends 'cron'
 
 supports 'ubuntu'
