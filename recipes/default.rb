@@ -30,6 +30,14 @@ end
 
 Chef::Log.info("Preparing Magento instances");
 
+user 'systemstorage' do
+  home '/home/systemstorage'
+end
+
+group 'systemstorage' do
+  action :create
+end
+
 sites = data_bag(node['devbox']['magento_instances_databag_name'])
 sites.each do |site|
   opts = data_bag_item(node['devbox']['magento_instances_databag_name'], site)
