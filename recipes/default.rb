@@ -28,39 +28,6 @@ execute "install mcrypt" do
   notifies :restart, "service[apache2]", :delayed
 end
 
-Chef::Log.info("Preparing Magento instances");
 
-user 'systemstorage' do
-  home '/home/systemstorage'
-end
-
-group 'systemstorage' do
-  action :create
-end
-
-sites = data_bag(node['devbox']['magento_instances_databag_name'])
-sites.each do |site|
-  opts = data_bag_item(node['devbox']['magento_instances_databag_name'], site)
-
-  Chef::Log.info("Found Magento site #{opts["id"]}")
-
-  devbox_magento_vhost "#{opts["project"]}_#{opts["environment"]}" do
-    project opts["project"]
-    environment opts["environment"]
-    server_name opts["server_name"]
-  end
-
-  opts["prepare_systemstorages"].each do |name|
-    devbox_systemstorage "#{opts["project"]}_#{name}" do
-      project opts["project"]
-      environment name
-    end
-  end
-
-  opts["databases"].each do |dbname|
-    devbox_magento_db dbname
-  end
-
-end
-
+include_recipe "devbox::instances"
 include_recipe "devbox::users_groups"
