@@ -26,9 +26,9 @@ action :create do
     action :create
   end
 
-  execute 'fix systemstorage permissions' do
-    command 'chown -R systemstorage:systemstorage /home/systemstorage/systemstorage; chmod -R ug+rw /home/systemstorage/systemstorage'
-    user 'root'
-  end
+#  execute 'fix systemstorage permissions' do
+#    command 'chown -R systemstorage:systemstorage /home/systemstorage/systemstorage; chmod -R ug+rw /home/systemstorage/systemstorage'
+#    user 'root'
+#  end
 
 end
