@@ -10,6 +10,6 @@
     Allow from all
   </Directory>
 
-  ErrorLog ${APACHE_LOG_DIR}/<%= @name %>-error.log
-  CustomLog ${APACHE_LOG_DIR}/<%= @name %>-access.log combined
+  ErrorLog ${APACHE_LOG_DIR}/<%= @server_name %>-error.log
+  CustomLog ${APACHE_LOG_DIR}/<%= @server_name %>-access.log combined
 </VirtualHost>
