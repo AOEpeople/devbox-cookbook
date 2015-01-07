@@ -15,11 +15,23 @@ action :create do
   server_name = new_resource.server_name
   server_aliases = new_resource.server_aliases
 
-#  web_app new_resource.server_name do
-#    docroot docroot
-#    server_name server_name
-#    server_aliases server_aliases
-#    allow_override 'All'
-#  end
+  template "/etc/apache2/sites-available/#{server_name}.conf" do
+    source 'vhost.erb'
+    mode 00644
+    owner 'root'
+    group 'root'
+    cookbook 'devbox'
+    action :create
+    variables(
+      docroot: docroot
+      server_name: server_name
+      server_aliases: server_aliases
+      valid_users: node[:devbox][:main_user]
+    )
+  end
+
+  execute "Enable vhost #{server_name}" do
+    command "a2ensite #{server_name}.conf && service apache2 restart"
+  end
 
 end
