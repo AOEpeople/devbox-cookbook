@@ -1,19 +1,8 @@
-node.default['apache']['version'] = '2.4'
-
-include_recipe "apache2"
-include_recipe "php"
-include_recipe "php::module_mysql"
-include_recipe "apache2::mod_php5"
-
 include_recipe "devbox::basic"
 include_recipe "devbox::awscli"
 
-#apache_site "default" do
-#  enable false
-#end
-
-# Required extensions
-%w{mysql-server-5.6 mysql-client-5.6 php5-curl php5-gd php5-mcrypt php5-redis}.each do |package|
+# Required packages
+%w{apache2 mysql-server-5.6 mysql-client-5.6 php5 php5-curl php5-gd php5-mcrypt php5-redis php5-mhash php5-cli php5-mysql php5-gd php5-intl php5-common}.each do |package|
   package "#{package}" do
     action :install
   end

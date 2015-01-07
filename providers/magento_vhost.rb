@@ -15,11 +15,11 @@ action :create do
   server_name = new_resource.server_name
   server_aliases = new_resource.server_aliases
 
-  web_app new_resource.server_name do
-    docroot docroot
-    server_name server_name
-    server_aliases server_aliases
-    allow_override 'All'
-  end
+#  web_app new_resource.server_name do
+#    docroot docroot
+#    server_name server_name
+#    server_aliases server_aliases
+#    allow_override 'All'
+#  end
 
 end
