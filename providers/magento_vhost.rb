@@ -23,10 +23,9 @@ action :create do
     cookbook 'devbox'
     action :create
     variables(
-      docroot: docroot
-      server_name: server_name
+      docroot: docroot,
+      server_name: server_name,
       server_aliases: server_aliases
-      valid_users: node[:devbox][:main_user]
     )
   end
 
