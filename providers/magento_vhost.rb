@@ -30,7 +30,7 @@ action :create do
   end
 
   execute "Enable vhost #{server_name}" do
-    command "a2ensite #{server_name}.conf && service apache2 restart"
+    command "a2ensite #{server_name}.conf"
   end
 
 end
