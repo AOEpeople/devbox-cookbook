@@ -11,7 +11,7 @@ end
 execute "install mcrypt" do
   command "php5enmod mcrypt"
   user 'root'
-  notifies :restart, "service[apache2]", :delayed
+  #notifies :restart, "service[apache2]", :delayed
 end
 
 
