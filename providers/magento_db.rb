@@ -16,7 +16,7 @@ action :create do
   end
 
   execute "Grant privileges #{name}" do
-    command "mysql -u root -e \"GRANT ALL PRIVILEGES ON `#{name}`.* TO '#{name}'@'localhost';\""
+    command "mysql -u root -e \"GRANT ALL PRIVILEGES ON #{name}.* TO '#{name}'@'localhost';\""
   end
 
   execute "Flush privileges" do
