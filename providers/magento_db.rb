@@ -3,12 +3,8 @@ action :create do
   name = new_resource.name
   password = new_resource.password || new_resource.name
 
-  execute "Create database user #{name}" do
-    command "mysql -u root -e \"CREATE USER '#{name}'@'localhost' IDENTIFIED BY '#{password}';\""
-  end
-
-  execute "Grant usage to #{name}" do
-    command "mysql -u root -e \"GRANT USAGE ON *.* TO '#{name}'@'localhost' IDENTIFIED BY '#{password}' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;\""
+  execute "Create user and grant usage to #{name}" do
+    command "mysql -u root -e \"GRANT ALL ON *.* TO '#{name}'@'localhost' IDENTIFIED BY '#{password}';\""
   end
 
   execute "Create database #{name}" do
