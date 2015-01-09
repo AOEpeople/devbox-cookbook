@@ -6,16 +6,16 @@ node['devbox']['packages'].each do |pkg|
 end
 
 # Install apache modules
-node['devbox']['apache_modules'].each do |module|
-  execute "Enable apache module #{module}" do
-    command "a2enmod #{module}"
+node['devbox']['apache_modules'].each do |m|
+  execute "Enable apache module #{m}" do
+    command "a2enmod #{m}"
   end
 end
 
 # Install php modules
-node['devbox']['php5_modules'].each do |module|
-  execute "Enable php module #{module}" do
-    command "php5enmod #{module}"
+node['devbox']['php5_modules'].each do |m|
+  execute "Enable php module #{m}" do
+    command "php5enmod #{m}"
   end
 end
 
