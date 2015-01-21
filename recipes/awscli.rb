@@ -27,8 +27,8 @@ sites.each do |site|
         execute "Configure aws cli tool for #{profile} and #{key}" do
           user node['devbox']['main_user']
 		  # See http://serverfault.com/questions/402881/execute-as-vagrant-user-not-root-with-chef-solo
-		  # environment ({'HOME' => "/home/#{node['devbox']['main_user']}", 'USER' => "#{node['devbox']['main_user']}" })
-          command "su #{node['devbox']['main_user']} -l -c 'aws configure set #{key} '#{value}' --profile #{profile}'"
+		  environment ({'HOME' => "/home/#{node['devbox']['main_user']}", 'USER' => "#{node['devbox']['main_user']}" })
+          command "aws configure set #{key} '#{value}' --profile '#{profile}'"
           action :run
         end
       end

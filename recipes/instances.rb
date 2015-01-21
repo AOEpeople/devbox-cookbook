@@ -45,6 +45,7 @@ sites.each do |site|
   if opts.key?("deploy_scripts")
 	execute "Get deploy scripts for #{opts["project"]}" do
 		command "if [ ! -d /home/systemstorage/systemstorage/#{opts["project"]}/bin/deploy ] ; then git clone #{opts["deploy_scripts"]} /home/systemstorage/systemstorage/#{opts["project"]}/bin/deploy ; fi"
+		user "systemstorage"
 	end
   end
   
